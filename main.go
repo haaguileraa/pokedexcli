@@ -21,6 +21,15 @@ func main() {
 		input := scanner.Text()
 		cleanedInput := cleanInput(input)
 		command := cleanedInput[0]
-		fmt.Println("Your command was:", command)
+		supportedCommands := getSupportedCommands()
+		clicmd, ok := supportedCommands[command]
+		if !ok {
+			fmt.Println("Unknown command")
+			continue
+		}
+		err := clicmd.callback()
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 }
