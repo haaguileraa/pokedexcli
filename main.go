@@ -8,6 +8,11 @@ import (
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
+	supportedCommands := getSupportedCommands()
+	conf := &config{
+		next: "",
+		previous: "",
+	}
 	for {
 		fmt.Print("Pokedex > ")
 		ok := scanner.Scan()
@@ -21,13 +26,12 @@ func main() {
 		input := scanner.Text()
 		cleanedInput := cleanInput(input)
 		command := cleanedInput[0]
-		supportedCommands := getSupportedCommands()
 		clicmd, ok := supportedCommands[command]
 		if !ok {
 			fmt.Println("Unknown command")
 			continue
 		}
-		err := clicmd.callback()
+		err := clicmd.callback(conf)
 		if err != nil {
 			fmt.Println(err)
 		}
