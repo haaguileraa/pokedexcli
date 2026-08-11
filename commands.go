@@ -11,8 +11,6 @@ type cliCommand struct {
 	callback 	func(*config) error
 }
 
-const defaultLimit = 20
-const pokeapiURL = "https://pokeapi.co/api/v2"
 
 func getSupportedCommands() map[string]cliCommand {
 	return  map[string]cliCommand{
