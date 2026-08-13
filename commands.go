@@ -44,7 +44,9 @@ func commandExit(c *config) error {
 }
 
 func commandHelp(c *config) error {
-	fmt.Println("Welcome to the Pokedex!\nUsage:\n\n")
+	fmt.Println("Welcome to the Pokedex!\nUsage:")
+	fmt.Println()
+	fmt.Println()
 	supportedCommands := getSupportedCommands()
 	for _, clicmd := range supportedCommands {
 		fmt.Printf("%s: %s\n", clicmd.name, clicmd.description)
