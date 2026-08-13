@@ -7,13 +7,8 @@ import (
 	"strings"
 )
 
-func listen(){
+func listen(c *config){
 	scanner := bufio.NewScanner(os.Stdin)
-	supportedCommands := getSupportedCommands()
-	conf := &config{
-		next: "",
-		previous: "",
-	}
 	for {
 		fmt.Print("Pokedex > ")
 		ok := scanner.Scan()
@@ -27,12 +22,12 @@ func listen(){
 		input := scanner.Text()
 		cleanedInput := cleanInput(input)
 		command := cleanedInput[0]
-		clicmd, ok := supportedCommands[command]
+		clicmd, ok := c.commands[command]
 		if !ok {
 			fmt.Println("Unknown command")
 			continue
 		}
-		err := clicmd.callback(conf)
+		err := clicmd.callback(c)
 		if err != nil {
 			fmt.Println(err)
 		}

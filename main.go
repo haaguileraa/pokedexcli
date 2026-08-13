@@ -1,5 +1,11 @@
 package main
 
+import "time"
+
 func main() {
-	listen()	
+	timeout := 5 * time.Second
+	interval := 7 * time.Second
+	config := NewConfig(timeout, interval)
+	listen(config)
 }
+
