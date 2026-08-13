@@ -5,6 +5,7 @@ import (
 )
 
 func commandMap(c* config) error {
+
 	resp, err := c.pokeapiClient.GetLocations(c.next)
 	
 	if err != nil {
