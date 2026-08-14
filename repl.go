@@ -22,12 +22,16 @@ func listen(c *config){
 		input := scanner.Text()
 		cleanedInput := cleanInput(input)
 		command := cleanedInput[0]
+		arg := ""
+		if len(cleanedInput) > 1 {
+			arg = cleanedInput[1]
+		}
 		clicmd, ok := c.commands[command]
 		if !ok {
 			fmt.Println("Unknown command")
 			continue
 		}
-		err := clicmd.callback(c)
+		err := clicmd.callback(c, arg)
 		if err != nil {
 			fmt.Println(err)
 		}

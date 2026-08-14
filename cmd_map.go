@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func commandMap(c* config) error {
+func commandMap(c* config, arg string) error {
 
 	resp, err := c.pokeapiClient.GetLocations(c.next)
 	
@@ -22,7 +22,7 @@ func commandMap(c* config) error {
 	return nil
 }
 
-func commandMapBack(c *config) error {
+func commandMapBack(c *config, arg string) error {
 	oldNext := c.next
 	c.next = c.previous
 	c.previous = oldNext
@@ -30,5 +30,5 @@ func commandMapBack(c *config) error {
 		fmt.Println("you're on the first page")
 		return nil
 	}
-	return commandMap(c)
+	return commandMap(c, arg)
 }
