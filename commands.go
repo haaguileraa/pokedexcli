@@ -35,6 +35,11 @@ func getSupportedCommands() map[string]cliCommand {
 			description: "displays a help message",
 			callback: commandHelp,
 		},
+		"inspect" : {
+			name: "inspect",
+			description: "display Pokemon's info if caught (already in the pokedex)",
+			callback: commandInspect,
+		},
 		"map" : {
 			name: "map",
 			description: "displays the next 20 locations",
