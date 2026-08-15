@@ -50,6 +50,11 @@ func getSupportedCommands() map[string]cliCommand {
 			description: "displays the previous 20 locations",
 			callback: commandMapBack,
 		},
+		"pokedex" : {
+			name: "pokedex",
+			description: "displays all Pokemons currently available in the pokedex",
+			callback: commandPokedex,
+		},
 	}
 }
 
